@@ -100,6 +100,8 @@ function CFAHub:DraggingEnabled(frame, parent)
     local dragging = false
     local dragInput, mousePos, framePos
 
+    local userInputService = game:GetService("UserInputService")
+
     local function update(input)
         local delta = input.Position - mousePos
         parent.Position = UDim2.new(
@@ -116,9 +118,19 @@ function CFAHub:DraggingEnabled(frame, parent)
             mousePos = input.Position
             framePos = parent.Position
 
+            -- Set Modal to true to prevent the screen from moving
+            if input.UserInputType == Enum.UserInputType.Touch then
+                userInputService.ModalEnabled = true
+            end
+
             input.Changed:Connect(function()
                 if input.UserInputState == Enum.UserInputState.End then
                     dragging = false
+
+                    -- Set Modal back to false when the drag ends
+                    if input.UserInputType == Enum.UserInputType.Touch then
+                        userInputService.ModalEnabled = false
+                    end
                 end
             end)
         end
@@ -130,7 +142,7 @@ function CFAHub:DraggingEnabled(frame, parent)
         end
     end)
 
-    game:GetService("UserInputService").InputChanged:Connect(function(input)
+    userInputService.InputChanged:Connect(function(input)
         if input == dragInput and dragging then
             update(input)
         end
