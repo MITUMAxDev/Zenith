@@ -1397,169 +1397,170 @@ function CFAHub:CreateWindow(title, gameName, intro)
             end -- Final
 
             function Elements:CreateSlider(slidertitle, setting, callback)
-                slidertitle = slidertitle or "Slider"
-                callback = callback or function() end
-                local Max_Value = setting.Max or 100
-                local Min_Value = setting.Min or 0
-                local DefaultValue = setting.DefaultValue or 0
+    slidertitle = slidertitle or "Slider"
+    callback = callback or function() end
+    local Max_Value = setting.Max or 100
+    local Min_Value = setting.Min or 0
+    local DefaultValue = setting.DefaultValue or 0
 
-                local dragging = false
+    local dragging = false
 
-                local Slider = Instance.new("Frame")
-                local SliderButton = Instance.new("Frame")
-                local SliderPercent = Instance.new("Frame")
-                local SliderPercentCorner = Instance.new("UICorner")
-                local SliderDrag = Instance.new("Frame")
-                local SliderDragCorner = Instance.new("UICorner")
-                local UICorner = Instance.new("UICorner")
-                local SliderIcon = Instance.new("ImageLabel")
-                local SilderText = Instance.new("TextLabel")
-                local SilderNumber = Instance.new("TextLabel")
-                local SliderCorner = Instance.new("UICorner")
+    local Slider = Instance.new("Frame")
+    local SliderButton = Instance.new("Frame")
+    local SliderPercent = Instance.new("Frame")
+    local SliderPercentCorner = Instance.new("UICorner")
+    local SliderDrag = Instance.new("Frame")
+    local SliderDragCorner = Instance.new("UICorner")
+    local UICorner = Instance.new("UICorner")
+    local SliderIcon = Instance.new("ImageLabel")
+    local SilderText = Instance.new("TextLabel")
+    local SilderNumber = Instance.new("TextLabel")
+    local SliderCorner = Instance.new("UICorner")
 
-                Slider.Name = "Slider"
-                Slider.Parent = SectionFrame
-                Slider.BackgroundColor3 = themes.Background
-                Objects[Slider] = "Background"
-                Slider.Size = UDim2.new(0, 440, 0, 49)
-            
-                SliderButton.Name = "SliderBar"
-                SliderButton.Parent = Slider
-                SliderButton.BackgroundColor3 = themes.Container
-                Objects[SliderButton] = "Container"
-                SliderButton.BorderSizePixel = 0
-                SliderButton.Position = UDim2.new(0.023, 0, 0.694000006, 0)
-                SliderButton.Size = UDim2.new(0, 420, 0, 8)
-                SliderButton.ZIndex = 2
-            
-                SliderPercent.Name = "SliderInBar"
-                SliderPercent.Parent = SliderButton
-                SliderPercent.BackgroundColor3 = themes.Slider
-                Objects[SliderPercent] = "Slider"
-                SliderPercent.Size = UDim2.new(0, 0, 1, 0)
-                SliderPercent.ZIndex = 2
-            
-                SliderPercentCorner.CornerRadius = UDim.new(0, 4)
-                SliderPercentCorner.Name = "SliderPercentCorner"
-                SliderPercentCorner.Parent = SliderPercent
-            
-                SliderDrag.Name = "SliderDrag"
-                SliderDrag.Parent = SliderPercent
-                SliderDrag.AnchorPoint = Vector2.new(0.5, 0.5)
-                SliderDrag.BackgroundColor3 = themes.TextColor
-                Objects[SliderDrag] = "TextColor"
-                SliderDrag.Position = UDim2.new(1, 0, 0.5, 0)
-                SliderDrag.Size = UDim2.new(0, 12, 0, 17)
-            
-                SliderDragCorner.CornerRadius = UDim.new(0, 4)
-                SliderDragCorner.Name = "SliderDragCorner"
-                SliderDragCorner.Parent = SliderDrag
-            
-                UICorner.CornerRadius = UDim.new(0, 4)
-                UICorner.Parent = SliderButton
-            
-                SliderIcon.Name = "SliderIcon"
-                SliderIcon.Parent = Slider
-                SliderIcon.AnchorPoint = Vector2.new(0.5, 0.899999976)
-                SliderIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                SliderIcon.BackgroundTransparency = 1.000
-                SliderIcon.Position = UDim2.new(0.949999988, 0, 0.5, 0)
-                SliderIcon.Size = UDim2.new(0, 23, 0, 23)
-                SliderIcon.ZIndex = 2
-                SliderIcon.Image = "rbxassetid://7072987508"
-                SliderIcon.ImageColor3 = themes.TextColor
-                Objects[SliderIcon] = "TextColor"
-            
-                SilderText.Name = "SilderText"
-                SilderText.Parent = Slider
-                SilderText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                SilderText.BackgroundTransparency = 1.000
-                SilderText.Size = UDim2.new(0, 366, 0, 34)
-                SilderText.ZIndex = 2
-                SilderText.Font = Enum.Font.SourceSansSemibold
-                SilderText.Text = " " .. slidertitle
-                SilderText.TextColor3 = themes.TextColor
-                Objects[SilderText] = "TextColor"
-                SilderText.TextSize = 22.000
-                SilderText.TextXAlignment = Enum.TextXAlignment.Left
-            
-                SilderNumber.Name = "SilderNumber"
-                SilderNumber.Parent = Slider
-                SilderNumber.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                SilderNumber.BackgroundTransparency = 1.000
-                SilderNumber.Position = UDim2.new(0.831818163, 0, -0.0408163257, 0)
-                SilderNumber.Size = UDim2.new(0, 30, 0, 34)
-                SilderNumber.ZIndex = 2
-                SilderNumber.Font = Enum.Font.SourceSansSemibold
-                SilderNumber.Text = Min_Value
-                SilderNumber.TextColor3 = themes.TextColor
-                Objects[SilderNumber] = "TextColor"
-                SilderNumber.TextSize = 22.000
-                SilderNumber.TextXAlignment = Enum.TextXAlignment.Right
-                SilderNumber.TextTransparency = 1
-            
-                SliderCorner.CornerRadius = UDim.new(0, 4)
-                SliderCorner.Name = "SliderCorner"
-                SliderCorner.Parent = Slider
+    Slider.Name = "Slider"
+    Slider.Parent = SectionFrame
+    Slider.BackgroundColor3 = themes.Background
+    Objects[Slider] = "Background"
+    Slider.Size = UDim2.new(0, 440, 0, 49)
 
-                SliderPercent.Size = UDim2.new(((DefaultValue or 0) / Max_Value),0, 1, 0)
-                SilderNumber.Text = tostring(DefaultValue and math.floor((DefaultValue / Max_Value) * (Max_Value - Min_Value) + Min_Value) or 0)
-                pcall(callback, DefaultValue)
+    SliderButton.Name = "SliderBar"
+    SliderButton.Parent = Slider
+    SliderButton.BackgroundColor3 = themes.Container
+    Objects[SliderButton] = "Container"
+    SliderButton.BorderSizePixel = 0
+    SliderButton.Position = UDim2.new(0.023, 0, 0.694000006, 0)
+    SliderButton.Size = UDim2.new(0, 420, 0, 8)
+    SliderButton.ZIndex = 2
 
-                coroutine.wrap(function()
-                    while wait() do
-                        Slider.BackgroundColor3 = themes.Background
-                        SliderPercent.BackgroundColor3 = themes.Slider
-                        SliderDrag.BackgroundColor3 = themes.TextColor
-                        SilderText.TextColor3 = themes.TextColor
-                        SilderNumber.TextColor3 = themes.TextColor
-                        SliderIcon.ImageColor3 = themes.TextColor
-                    end
-                end)()
+    SliderPercent.Name = "SliderInBar"
+    SliderPercent.Parent = SliderButton
+    SliderPercent.BackgroundColor3 = themes.Slider
+    Objects[SliderPercent] = "Slider"
+    SliderPercent.Size = UDim2.new(0, 0, 1, 0)
+    SliderPercent.ZIndex = 2
 
-                local function move(input)
-					local pos =
-						UDim2.new(
-							math.clamp((input.Position.X - SliderButton.AbsolutePosition.X) / SliderButton.AbsoluteSize.X, 0, 1),
-							0,
-							1,
-							0
-						)
-                    Utility:TweenObject(SliderPercent, {Size = pos}, 0.25)
-					local value = math.floor(((pos.X.Scale * Max_Value) / Max_Value) * (Max_Value - Min_Value) + Min_Value)
-					SilderNumber.Text = tostring(value)
-					pcall(callback, value)
-				end
+    SliderPercentCorner.CornerRadius = UDim.new(0, 4)
+    SliderPercentCorner.Name = "SliderPercentCorner"
+    SliderPercentCorner.Parent = SliderPercent
 
-                SliderDrag.InputBegan:Connect(function(input)
-					if input.UserInputType == Enum.UserInputType.MouseButton1 then
-						dragging = true
-                        Utility:TweenObject(SilderNumber, {TextTransparency = 0}, 0.5)
-					end
-				end)
+    SliderDrag.Name = "SliderDrag"
+    SliderDrag.Parent = SliderPercent
+    SliderDrag.AnchorPoint = Vector2.new(0.5, 0.5)
+    SliderDrag.BackgroundColor3 = themes.TextColor
+    Objects[SliderDrag] = "TextColor"
+    SliderDrag.Position = UDim2.new(1, 0, 0.5, 0)
+    SliderDrag.Size = UDim2.new(0, 12, 0, 17)
 
-				SliderDrag.InputEnded:Connect(function(input)
-					if input.UserInputType == Enum.UserInputType.MouseButton1 then
-					    dragging = false
-                        Utility:TweenObject(SilderNumber, {TextTransparency = 1}, 0.5)
-					end
-				end)
+    SliderDragCorner.CornerRadius = UDim.new(0, 4)
+    SliderDragCorner.Name = "SliderDragCorner"
+    SliderDragCorner.Parent = SliderDrag
 
-                Input.InputChanged:Connect(function(input)
-                    if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
-						move(input)
-					end
-                end)
+    UICorner.CornerRadius = UDim.new(0, 4)
+    UICorner.Parent = SliderButton
 
-                local SliderElements = {}
+    SliderIcon.Name = "SliderIcon"
+    SliderIcon.Parent = Slider
+    SliderIcon.AnchorPoint = Vector2.new(0.5, 0.899999976)
+    SliderIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    SliderIcon.BackgroundTransparency = 1.000
+    SliderIcon.Position = UDim2.new(0.949999988, 0, 0.5, 0)
+    SliderIcon.Size = UDim2.new(0, 23, 0, 23)
+    SliderIcon.ZIndex = 2
+    SliderIcon.Image = "rbxassetid://7072987508"
+    SliderIcon.ImageColor3 = themes.TextColor
+    Objects[SliderIcon] = "TextColor"
 
-                function SliderElements:Change(tochange)
-                    SliderPercent.Size = UDim2.new(((tochange or 0) / Max_Value), 0, 1, 0)
-					SilderNumber.Text = tostring(tochange and math.floor((tochange / Max_Value) * (Max_Value - Min_Value) + Min_Value) or 0)
-					pcall(callback, tochange)
-				end
+    SilderText.Name = "SilderText"
+    SilderText.Parent = Slider
+    SilderText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    SilderText.BackgroundTransparency = 1.000
+    SilderText.Size = UDim2.new(0, 366, 0, 34)
+    SilderText.ZIndex = 2
+    SilderText.Font = Enum.Font.SourceSansSemibold
+    SilderText.Text = " " .. slidertitle
+    SilderText.TextColor3 = themes.TextColor
+    Objects[SilderText] = "TextColor"
+    SilderText.TextSize = 22.000
+    SilderText.TextXAlignment = Enum.TextXAlignment.Left
 
-            end -- Final
+    SilderNumber.Name = "SilderNumber"
+    SilderNumber.Parent = Slider
+    SilderNumber.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    SilderNumber.BackgroundTransparency = 1.000
+    SilderNumber.Position = UDim2.new(0.831818163, 0, -0.0408163257, 0)
+    SilderNumber.Size = UDim2.new(0, 30, 0, 34)
+    SilderNumber.ZIndex = 2
+    SilderNumber.Font = Enum.Font.SourceSansSemibold
+    SilderNumber.Text = Min_Value
+    SilderNumber.TextColor3 = themes.TextColor
+    Objects[SilderNumber] = "TextColor"
+    SilderNumber.TextSize = 22.000
+    SilderNumber.TextXAlignment = Enum.TextXAlignment.Right
+    SilderNumber.TextTransparency = 1
+
+    SliderCorner.CornerRadius = UDim.new(0, 4)
+    SliderCorner.Name = "SliderCorner"
+    SliderCorner.Parent = Slider
+
+    SliderPercent.Size = UDim2.new(((DefaultValue or 0) / Max_Value), 0, 1, 0)
+    SilderNumber.Text = tostring(DefaultValue and math.floor((DefaultValue / Max_Value) * (Max_Value - Min_Value) + Min_Value) or 0)
+    pcall(callback, DefaultValue)
+
+    coroutine.wrap(function()
+        while wait() do
+            Slider.BackgroundColor3 = themes.Background
+            SliderPercent.BackgroundColor3 = themes.Slider
+            SliderDrag.BackgroundColor3 = themes.TextColor
+            SilderText.TextColor3 = themes.TextColor
+            SilderNumber.TextColor3 = themes.TextColor
+            SliderIcon.ImageColor3 = themes.TextColor
+        end
+    end)()
+
+    local function move(input)
+        local pos =
+            UDim2.new(
+                math.clamp((input.Position.X - SliderButton.AbsolutePosition.X) / SliderButton.AbsoluteSize.X, 0, 1),
+                0,
+                1,
+                0
+            )
+        Utility:TweenObject(SliderPercent, {Size = pos}, 0.25)
+        local value = math.floor(((pos.X.Scale * Max_Value) / Max_Value) * (Max_Value - Min_Value) + Min_Value)
+        SilderNumber.Text = tostring(value)
+        pcall(callback, value)
+    end
+
+    SliderDrag.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            Utility:TweenObject(SilderNumber, {TextTransparency = 0}, 0.5)
+        end
+    end)
+
+    SliderDrag.InputEnded:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = false
+            Utility:TweenObject(SilderNumber, {TextTransparency = 1}, 0.5)
+        end
+    end)
+
+    game:GetService("UserInputService").InputChanged:Connect(function(input)
+        if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+            move(input)
+        end
+    end)
+
+    local SliderElements = {}
+
+    function SliderElements:Change(tochange)
+        SliderPercent.Size = UDim2.new(((tochange or 0) / Max_Value), 0, 1, 0)
+        SilderNumber.Text = tostring(tochange and math.floor((tochange / Max_Value) * (Max_Value - Min_Value) + Min_Value) or 0)
+        pcall(callback, tochange)
+    end
+
+    return SliderElements
+end
 
             function Elements:CreateTextbox(boxtitle, desc, callback,def)
                 boxtitle = boxtitle or "Textbox"
