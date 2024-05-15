@@ -1,5 +1,9 @@
-Zenith Hub by mituma
+# Zenith Hub by mituma
+
+## Set-up Configuration
 
 ```lua
-hi
+getgenv().config = {
+  -- Configs here
+}
 ```
