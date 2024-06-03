@@ -439,8 +439,7 @@ function Library:CreateWindow(Config, Parent)
 				end
 				return ToggleInit
 			end
-			local UserInputService = game:GetService("UserInputService")
-
+			
 function SectionInit:CreateSlider(Name, Min, Max, Default, Precise, Callback)
     local DefaultLocal = Default or 50
     local SliderInit = {}
