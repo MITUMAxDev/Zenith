@@ -730,7 +730,7 @@ end
                 title_15.BackgroundTransparency = 1.000
                 title_15.Position = UDim2.new(0, 10, 0, 51)
                 title_15.Size = UDim2.new(0, 234, 0, 42)
-                title_15.ZIndex = 0
+                title_15.ZIndex = 1
                 title_15.Font = Enum.Font.SourceSans
                 title_15.Text = name
                 title_15.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -780,6 +780,7 @@ end
                 list.Position = UDim2.new(0, 0, 1, 0)
                 list.Size = UDim2.new(0, 234, 0, 5)
                 list.Visible = false
+                list.ZIndex = 1
                 
                 UIGradient_4.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(167, 167, 167))}
                 UIGradient_4.Rotation = 90
