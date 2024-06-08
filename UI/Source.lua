@@ -634,7 +634,7 @@ function Library:CreateWindow(title, color)
     
     bar.Name = "bar"
     bar.Parent = slider
-    bar.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    bar.BackgroundColor3 = Color3.fromRGB(147, 112, 219)
     bar.BorderColor3 = Color3.fromRGB(27, 42, 53)
     bar.BorderSizePixel = 0
     bar.Size = UDim2.new(0, 50, 1, 0)
