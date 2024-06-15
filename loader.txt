@@ -1,0 +1,19 @@
+local SelectLanguage = getgenv().configs.Language
+
+if SelectLanguage == "TH" then
+  _G.TH = true
+else
+  _G.EN = true
+end
+
+repeat 
+    task.wait() 
+until game:IsLoaded()
+
+if _G.TH then
+  game:GetService("Players").LocalPlayer:Kick("ต้องการ Whitelist ติดต่อ FB: Jitpisut Soma")
+end
+
+if _G.EN then
+  game:GetService("Players").LocalPlayer:Kick("Whitelist Needed")
+end
